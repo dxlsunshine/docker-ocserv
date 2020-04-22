@@ -69,7 +69,6 @@ COPY cn-no-route.txt /etc/ocserv/config-per-group/Route
 RUN  mkdir -p /data/group \
      && mkdir -p /data/ocserv \
      && mv  /etc/ocserv/config-per-group /data/group \
-     && mv /etc/ocserv/ocpasswd  /data/ocserv \
      && mv /etc/ocserv/ocserv.conf  /data/ocserv \
      && ln -s /data/group/config-per-group \
      && ln /data/ocserv/ocpasswd \
