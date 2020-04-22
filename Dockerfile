@@ -72,8 +72,8 @@ RUN  mkdir -p /data/group \
      && mv /etc/ocserv/ocserv.conf  /data/ocserv \
      && ln -s /data/group/config-per-group \
      && touch /data/ocserv/ocpasswd \
-     && ln /data/ocserv/ocpasswd \
-     && ln /data/ocserv/ocserv.conf
+     && ln -s /data/ocserv/ocpasswd \
+     && ln -s /data/ocserv/ocserv.conf
      
           
 
