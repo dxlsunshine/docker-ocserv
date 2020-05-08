@@ -2,7 +2,7 @@ FROM alpine:3.10
 
 MAINTAINER Tommy Lau <tommy@gen-new.com>
 
-ENV OC_VERSION=0.12.4
+ENV OC_VERSION=0.12.6
 
 RUN buildDeps=" \
 		curl \
@@ -21,6 +21,8 @@ RUN buildDeps=" \
 		xz \
 	"; \
 	set -x \
+	&& echo "https://mirrors.ustc.edu.cn/alpine/v3.10/main/" > /etc/apk/repositories \
+    && echo "https://mirrors.ustc.edu.cn/alpine/v3.10/main/" >> /etc/apk/repositories\
 	&& apk add --update --virtual .build-deps $buildDeps \
 	&& curl -SL "ftp://ftp.infradead.org/pub/ocserv/ocserv-$OC_VERSION.tar.xz" -o ocserv.tar.xz \
 	&& curl -SL "ftp://ftp.infradead.org/pub/ocserv/ocserv-$OC_VERSION.tar.xz.sig" -o ocserv.tar.xz.sig \
@@ -82,3 +84,5 @@ ENTRYPOINT ["/entrypoint.sh"]
 
 EXPOSE 443
 CMD ["ocserv", "-c", "/etc/ocserv/ocserv.conf", "-f"]
+
+
